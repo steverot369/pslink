@@ -1,4 +1,5 @@
 #include "chiaki_bridge.h"
+#include "pslink_config.h"
 
 #include <string.h>
 
@@ -8,15 +9,15 @@ int pslink_discover(
 {
     strcpy(
         console->name,
-        "Living Room PS5"
+        DEFAULT_PS5_NAME
     );
 
     strcpy(
         console->ip,
-        "192.168.1.50"
+        DEFAULT_PS5_IP
     );
 
-    console->online = 1;
+    console->online = 0;
 
     return 0;
 }

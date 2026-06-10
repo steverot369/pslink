@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'discovery_screen.dart';
 import '../bridge/rust_api.dart';
+import '../models/ps5_info.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -68,7 +69,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const DiscoveryScreen(),
+                          builder: (_) => DiscoveryScreen(
+  ps5: const PS5Info(
+    hostName: "PS5-972335",
+    hostType: "PS5",
+    hostId: "2840Dw122D1AC551",
+    systemVersion: "13232233200006",
+    ip: "192.168.29.144",
+  ),
+),
                         ),
                       );
                     },

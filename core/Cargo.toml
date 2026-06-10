@@ -1,9 +1,15 @@
 [package]
-name = "core"
+name = "pslink_core"
 version = "0.1.0"
 edition = "2024"
+build = "build.rs"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib","rlib"]
 
+[build-dependencies]
+cc = "1.1"
+[[bin]]
+name = "pslink_test"
+path = "src/main.rs"
 [dependencies]
