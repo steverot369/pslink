@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
 import 'discovery_screen.dart';
-
-class HomeScreen extends StatelessWidget {
+import '../bridge/rust_api.dart';
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  String result = "";
+
+  Future<void> testRust() async {
+    String msg = await RustApi.getMessage();
+
+    setState(() {
+      result = msg;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +79,32 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton(
+                    onPressed: testRust,
+                    child: const Text(
+                      "Test Rust Connection",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 30),
+
+                Text(
+                  result,
+                  style: const TextStyle(
+                    color: Colors.green,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                const SizedBox(height: 30),
 
                 const Text(
                   "Status : Not Connected",
@@ -75,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 10),
 
                 const Text(
-                  "Version : 0.1.1",
+                  "Version : 0.2.2",
                   style: TextStyle(
                     color: Colors.grey,
                   ),
@@ -89,3 +130,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+  

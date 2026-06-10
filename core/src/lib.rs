@@ -1,4 +1,5 @@
-#[unsafe(no_mangle)]
-pub extern "C" fn get_version() -> i32 {
-    1
+mod discovery;
+
+pub fn get_pslink_message() -> String {
+    "PSLink Rust Core Connected".to_string()
 }
