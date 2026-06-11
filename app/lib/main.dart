@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 
-void main() {
-  runApp(const PSLinkApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+ 
+
+  runApp(
+    const PSLinkApp(),
+  );
 }
 
 class PSLinkApp extends StatelessWidget {
